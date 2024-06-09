@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+          }
+          
+          .card {
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+          }
+          
+          .card-header {
+            background-color: #007bff;
+            color: white;
+          }
+          
+          h1, h2 {
+            margin-bottom: 20px;
+          }
+          
+          hr {
+            border-top: 1px solid #007bff;
+          }
+          
+          .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+          }
+          
+          .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+          }
+          .video-container {
+            max-width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+          }
+          
+          .video-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+          }
+          
+    </style>
+    <title>Emotion Detection - Camera</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h1 class="text-center">Real-time Emotion Detection</h1>
+        </div>
+        <div class="card-body text-center">
+          <div class="video-container">
+            <img src="{{ url_for('video_feed') }}" class="img-fluid" id="live-feed" alt="Live Feed">
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.addEventListener('resize', function() {
+        const videoElement = document.getElementById('live-feed');
+        const aspectRatio = 16 / 9;
+        const maxWidth = document.querySelector('.video-container').clientWidth;
+        videoElement.style.width = maxWidth + 'px';
+        videoElement.style.height = (maxWidth / aspectRatio) + 'px';
+      });
+
+      window.dispatchEvent(new Event('resize'));
+    </script>
+  </body>
+</html>
+
+
+
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Emotion Detection - Camera</title>
+  </head>
+  <body>
+    <div>
+      <h1>Real-time Emotion Detection</h1>
+      <img src="{{ url_for('video_feed') }}" width="100%">
+    </div>
+  </body>
+</html> -->
